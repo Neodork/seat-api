@@ -189,7 +189,7 @@ class ApiServiceProvider extends AbstractSeatPlugin
      */
     public function getPackagistPackageName(): string
     {
-        return 'api';
+        return 'eveseat';
     }
 
     /**
@@ -199,7 +199,7 @@ class ApiServiceProvider extends AbstractSeatPlugin
      */
     public function getPackagistVendorName(): string
     {
-        return 'eveseat';
+        return 'neodork';
     }
 
     /**
