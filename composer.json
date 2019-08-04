@@ -2,6 +2,7 @@
   "name": "neodork/seat-api",
   "description": "SeAT API Interface",
   "license": "GPL-2.0",
+  "version": "3.0.11",
   "authors": [
     {
       "name": "Leon Jacobs",
