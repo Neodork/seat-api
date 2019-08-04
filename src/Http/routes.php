@@ -28,32 +28,32 @@ Route::group([
 
         // Http Routes to the API Key Administration Section
         Route::group([
-            'namespace'  => 'Admin',
+            'namespace' => 'Admin',
             'middleware' => ['auth', 'bouncer:superuser'],
-            'prefix'     => 'api-admin',
+            'prefix' => 'api-admin',
         ], function () {
 
             Route::get('/', [
-                'as'   => 'api-admin.list',
-                'uses' => 'ApiAdminController@listTokens', ]);
+                'as' => 'api-admin.list',
+                'uses' => 'ApiAdminController@listTokens',]);
             Route::post('/', [
-                'as'   => 'api-admin.token.create',
-                'uses' => 'ApiAdminController@generateToken', ]);
+                'as' => 'api-admin.token.create',
+                'uses' => 'ApiAdminController@generateToken',]);
             Route::get('/logs/{token_id}', [
-                'as'   => 'api-admin.token.logs',
-                'uses' => 'ApiAdminController@showLogs', ]);
+                'as' => 'api-admin.token.logs',
+                'uses' => 'ApiAdminController@showLogs',]);
             Route::get('/delete/{token_id}', [
-                'as'   => 'api-admin.token.delete',
-                'uses' => 'ApiAdminController@deleteToken', ]);
+                'as' => 'api-admin.token.delete',
+                'uses' => 'ApiAdminController@deleteToken',]);
 
         });
     });
 
     // Http Routes to the SeAT API itself
     Route::group([
-        'namespace'  => 'Api',
+        'namespace' => 'Api',
         'middleware' => ['api.request', 'api.auth'],
-        'prefix'     => 'api',
+        'prefix' => 'api',
     ], function () {
 
         // The version 2 API :D
@@ -128,6 +128,10 @@ Route::group([
                 Route::get('/sheet/{corporation_id}', 'CorporationController@getSheet');
                 Route::get('/wallet-journal/{corporation_id}', 'CorporationController@getWalletJournal');
                 Route::get('/wallet-transactions/{corporation_id}', 'CorporationController@getWalletTransactions');
+            });
+
+            Route::group(['prefix' => 'universe'], function () {
+                Route::get('/structures/{structure_id}/', 'UniverseController@getStructure');
             });
         });
 

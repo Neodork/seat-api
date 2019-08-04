@@ -24,6 +24,9 @@
     "darkaonline/l5-swagger": "5.5.*",
     "zircote/swagger-php": "2.*"
   },
+  "replace": {
+    "eveseat/api": "^3.0"
+  },
   "extra": {
     "laravel": {
       "providers": [
