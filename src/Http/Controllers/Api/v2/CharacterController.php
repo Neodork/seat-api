@@ -1037,7 +1037,7 @@ class CharacterController extends ApiController
     public function getNotifications(int $character_id)
     {
 
-        return NotificationResource::collection(CharacterNotification::where('character_id', $character_id)
+        return NotificationResource::collection(CharacterNotification::orderBy('notification_id')->where('character_id', $character_id)
             ->paginate());
     }
 
@@ -1382,8 +1382,8 @@ class CharacterController extends ApiController
     {
 
         return WalletTransactionResource::collection(
-                CharacterWalletTransaction::with('type')
-                    ->where('character_id', $character_id)
-            ->paginate());
+            CharacterWalletTransaction::with('type')
+                ->where('character_id', $character_id)
+                ->paginate());
     }
 }
